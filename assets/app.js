@@ -22,9 +22,24 @@
     a.download = ic.n + ".svg"; a.click(); URL.revokeObjectURL(a.href);
   };
 
+  // common names people search for, mapped to Nib's names
+  const ALIAS = {
+    x: "close", cancel: "close", dismiss: "close", times: "close", "shopping-cart": "cart", basket: "cart", buy: "cart",
+    "thumbs-up": "like", "thumbs-down": "dislike", upvote: "like", downvote: "dislike", mic: "microphone", voice: "microphone",
+    zap: "bolt", flash: "lightning", "more-horizontal": "dots-horizontal", "more-vertical": "dots-vertical", kebab: "dots-vertical",
+    meatballs: "dots-horizontal", ellipsis: "dots", "sign-in": "log-in", login: "log-in", "sign-out": "log-out", logout: "log-out",
+    delete: "trash", bin: "trash", remove: "trash", edit: "pencil", write: "pencil", cog: "settings", gear: "settings", preferences: "settings",
+    person: "user", profile: "user", account: "user", magnifier: "search", find: "search", envelope: "mail", email: "mail",
+    notification: "bell", alert: "bell", favourite: "heart", favorite: "heart", love: "heart", pin: "map-pin", location: "map-pin",
+    house: "home", photo: "image", picture: "image", picture2: "camera", time: "clock", date: "calendar", ai: "sparkles",
+    graph: "chart", stats: "analytics", money: "wallet", payment: "credit-card", lock: "lock", password: "lock", hamburger: "menu",
+  };
   const filtered = () => {
-    const q = query.trim().toLowerCase().replace(/\s+/g, "-");
-    return all.filter((ic) => (cat === "All icons" || ic.c === cat) && (!q || ic.n.includes(q) || ic.c.toLowerCase().includes(query.trim().toLowerCase())));
+    const raw = query.trim().toLowerCase();
+    const q = raw.replace(/\s+/g, "-");
+    const alt = ALIAS[q] || ALIAS[raw];
+    return all.filter((ic) => (cat === "All icons" || ic.c === cat) &&
+      (!q || ic.n.includes(q) || (alt && ic.n.includes(alt)) || ic.c.toLowerCase().includes(raw)));
   };
 
   function renderCats() {

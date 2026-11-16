@@ -8,12 +8,12 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=3">
+<link rel="stylesheet" href="assets/site.css?v=4">
 </head>
 <body>
 <nav class="nav"><div class="wrap">
   <a class="brand" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cobalt)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l6.5 7.5L12 22 5.5 9.5z"/><path d="M12 22v-9"/><circle cx="12" cy="11" r="1.6"/></svg>Nib</a>
-  <div class="links"><a href="./">Icons</a><a class="on" href="docs.html">Docs</a><a href="#guidelines">Guidelines</a><a href="#changelog">Changelog</a><a class="pill" href="https://github.com/mrigankad/nib-icons">GitHub</a></div>
+  <div class="links"><a href="./">Icons</a><a class="on" href="docs.html">Docs</a><a href="#guidelines">Guidelines</a><a href="#changelog">Changelog</a><button class="themer" id="themer" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></button><a class="pill" href="https://github.com/mrigankad/nib-icons">GitHub</a></div>
 </div></nav>
 
 <div class="wrap docs">
@@ -24,13 +24,13 @@
 
   <article class="prose">
     <h1>Docs</h1>
-    <p>Nib is a set of <strong>2,194 line icons</strong> in 42 categories. Every icon is drawn by hand on a 24 by 24 grid with a single 1.5 stroke, so any two icons sit happily side by side. They are plain SVG with no dependencies.</p>
+    <p>Nib is a set of <strong>2,196 line icons</strong> in 42 categories. Every icon is drawn by hand on a 24 by 24 grid with a single 1.5 stroke, so any two icons sit happily side by side. They are plain SVG with no dependencies.</p>
 
     <h2 id="start">Getting started</h2>
     <p>Pick the route that fits your project:</p>
     <ul>
       <li><strong>Browse and copy.</strong> Find an icon on the <a href="./" style="color:var(--cobalt)">icon page</a> and press Copy SVG or Copy React.</li>
-      <li><strong>Download everything.</strong> <a href="dist/nib-icons.zip" style="color:var(--cobalt)">nib-icons.zip</a> holds all 2,194 SVG files.</li>
+      <li><strong>Download everything.</strong> <a href="dist/nib-icons.zip" style="color:var(--cobalt)">nib-icons.zip</a> holds all 2,196 SVG files.</li>
       <li><strong>Link from a CDN.</strong> Every file is served from GitHub through jsDelivr. See below.</li>
       <li><strong>Clone the repo.</strong> <code>git clone https://github.com/mrigankad/nib-icons</code> and use the <code>icons/</code> folder.</li>
     </ul>
@@ -99,7 +99,7 @@
     <h2 id="changelog">Changelog</h2>
     <h3>1.0.0 · November 2026</h3>
     <ul>
-      <li>First public release: 2,194 icons in 42 categories.</li>
+      <li>First public release: 2,196 icons in 42 categories.</li>
       <li>Polish pass on 52 icons that read poorly at small sizes.</li>
       <li>Website with search, category filter, adjustable size and stroke, and copy as SVG or React.</li>
       <li>SVG sprite, zip download and CDN links.</li>
@@ -115,5 +115,6 @@
 <script>
 document.querySelectorAll("pre").forEach(p=>{const b=document.createElement("button");b.className="copy";b.textContent="Copy";b.onclick=async()=>{try{await navigator.clipboard.writeText(p.innerText.replace(/Copy$/,"").trim());b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1200)}catch{}};p.appendChild(b)});
 </script>
+<script>(()=>{const r=document.documentElement;try{const t=localStorage.getItem("nib-theme");if(t)r.dataset.theme=t}catch(e){}const b=document.getElementById("themer");b&&b.addEventListener("click",()=>{const d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.dataset.theme=d?"light":"dark";try{localStorage.setItem("nib-theme",r.dataset.theme)}catch(e){}})})()</script>
 </body>
 </html>

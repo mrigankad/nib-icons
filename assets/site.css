@@ -193,3 +193,8 @@ body{font-feature-settings:"cv11","ss01"}
 .cta p{color:#9AA6D6;margin:0}
 .cta-b{display:flex;flex-direction:column;gap:12px}
 @media (max-width:720px){.cta{padding:40px 28px}}
+/* manual theme override */
+:root[data-theme=light]{--ink:#0F1A3D;--muted:#5A6178;--faint:#8A8FA3;--cobalt:#1F3FD1;--cobalt-soft:#EEF0FB;--paper:#FAFAF7;--card:#FFFFFF;--line:#E6E6E0;--line-2:#ECECE6;--well:#F4F4EF}
+:root[data-theme=dark]{--ink:#ECEEF7;--muted:#A2A8BE;--faint:#7A8099;--cobalt:#7D93FF;--cobalt-soft:#1B2347;--paper:#0B1022;--card:#111831;--line:#222A45;--line-2:#1C2440;--well:#0E1530}
+.themer{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--card);display:inline-flex;align-items:center;justify-content:center;color:var(--ink)}
+.themer svg{width:18px;height:18px}

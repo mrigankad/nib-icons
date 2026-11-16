@@ -4,8 +4,8 @@ export const NibFireworks = forwardRef(function NibFireworks({ size = 24, color 
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('path', { d: "M12 22V12M12 12V4M12 12H4M12 12h8M12 12L6 6M12 12l6-6M12 12l-6 6M12 12l6 6", fill: "none" }),
-    h('circle', { cx: "12", cy: "12", r: "1.5", fill: "#FFFFFF" })
+    h('circle', { cx: "12", cy: "12", r: "1.5", fill: "none" }),
+    h('path', { d: "M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4", fill: "none" })
   );
 });
 

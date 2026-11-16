@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nib · 2,194 hand-drawn line icons</title>
+<meta name="description" content="Nib is a free, open source set of 2,194 hand-drawn line icons on a 24px grid with one 1.5 stroke. Copy SVG, React or download everything.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cobalt)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l6.5 7.5L12 22 5.5 9.5z"/><path d="M12 22v-9"/><circle cx="12" cy="11" r="1.6"/></svg>Nib</a>
+  <div class="links"><a class="on" href="./">Icons</a><a href="docs.html">Docs</a><a href="docs.html#guidelines">Guidelines</a><a href="docs.html#changelog">Changelog</a><a class="pill" href="https://github.com/mrigankad/nib-icons">GitHub</a></div>
+</div></nav>
+
+<header class="hero wrap">
+  <span class="chip"><span id="count">2,194</span> icons · 42 categories · MIT</span>
+  <h1>Every icon, drawn with one steady line.</h1>
+  <p class="lede">A hand-drawn open source icon set on a 24 grid. One stroke weight, round joins, nothing traced. Copy an SVG, or take the whole set.</p>
+  <div class="actions">
+    <label class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color:var(--muted)"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Search 2,194 icons…" autocomplete="off" aria-label="Search icons"><span class="kbd">/</span></label>
+    <a class="btn" href="dist/nib-icons.zip" download>Download all SVGs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+  </div>
+</header>
+
+<main class="wrap browser" id="icons">
+  <aside class="cats" id="cats" aria-label="Categories"></aside>
+  <section>
+    <div class="bar"><span id="shown"></span>
+      <div class="ctl"><label for="sz">Size</label><input id="sz" type="range" min="16" max="48" step="4" value="28"><label for="sw">Stroke</label><input id="sw" type="range" min="1" max="2.5" step="0.25" value="1.5"><span id="swv">1.5</span></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <button class="more" id="more" hidden>Show more</button>
+  </section>
+  <aside class="detail" id="detail"></aside>
+</main>
+<div class="sheet" id="sheet"></div>
+<div class="toast" id="toast"></div>
+
+<footer><div class="wrap"><span>Nib icons · MIT licensed · drawn by hand in Paper</span><span><a href="docs.html">Docs</a> · <a href="https://github.com/mrigankad/nib-icons">GitHub</a></span></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

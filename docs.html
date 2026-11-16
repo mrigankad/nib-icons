@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nib Docs · Using the icons</title>
+<meta name="description" content="How to use Nib icons: SVG files, sprite, CDN links, React, styling and drawing guidelines.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cobalt)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l6.5 7.5L12 22 5.5 9.5z"/><path d="M12 22v-9"/><circle cx="12" cy="11" r="1.6"/></svg>Nib</a>
+  <div class="links"><a href="./">Icons</a><a class="on" href="docs.html">Docs</a><a href="#guidelines">Guidelines</a><a href="#changelog">Changelog</a><a class="pill" href="https://github.com/mrigankad/nib-icons">GitHub</a></div>
+</div></nav>
+
+<div class="wrap docs">
+  <nav class="toc" aria-label="On this page">
+    <span class="h">On this page</span>
+    <a href="#start">Getting started</a><a href="#svg">Plain SVG</a><a href="#cdn">CDN links</a><a href="#sprite">SVG sprite</a><a href="#react">React</a><a href="#styling">Styling</a><a href="#guidelines">Guidelines</a><a href="#contributing">Contributing</a><a href="#changelog">Changelog</a><a href="#license">License</a>
+  </nav>
+
+  <article class="prose">
+    <h1>Docs</h1>
+    <p>Nib is a set of <strong>2,194 line icons</strong> in 42 categories. Every icon is drawn by hand on a 24 by 24 grid with a single 1.5 stroke, so any two icons sit happily side by side. They are plain SVG with no dependencies.</p>
+
+    <h2 id="start">Getting started</h2>
+    <p>Pick the route that fits your project:</p>
+    <ul>
+      <li><strong>Browse and copy.</strong> Find an icon on the <a href="./" style="color:var(--cobalt)">icon page</a> and press Copy SVG or Copy React.</li>
+      <li><strong>Download everything.</strong> <a href="dist/nib-icons.zip" style="color:var(--cobalt)">nib-icons.zip</a> holds all 2,194 SVG files.</li>
+      <li><strong>Link from a CDN.</strong> Every file is served from GitHub through jsDelivr. See below.</li>
+      <li><strong>Clone the repo.</strong> <code>git clone https://github.com/mrigankad/nib-icons</code> and use the <code>icons/</code> folder.</li>
+    </ul>
+
+    <h2 id="svg">Plain SVG</h2>
+    <p>Each file uses <code>currentColor</code>, so it takes the text colour of whatever it sits in.</p>
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="1.5"
+     stroke-linecap="round" stroke-linejoin="round"&gt;
+  &lt;path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5zM13 9l-3 5h4l-3 5"/&gt;
+&lt;/svg&gt;</code></pre>
+
+    <h2 id="cdn">CDN links</h2>
+    <p>Reference any icon by name. Pin a tag in production so icons never change underneath you.</p>
+<pre><code>&lt;img src="https://cdn.jsdelivr.net/gh/mrigankad/nib-icons@main/icons/hydro.svg"
+     width="24" height="24" alt=""&gt;</code></pre>
+    <p>An image tag cannot inherit colour. If you need the icon to follow your text colour, inline the SVG or use the sprite.</p>
+
+    <h2 id="sprite">SVG sprite</h2>
+    <p><code>dist/sprite.svg</code> contains every icon as a <code>&lt;symbol&gt;</code> with the id <code>nib-NAME</code>. Inline it once near the top of the page, then reference icons anywhere.</p>
+<pre><code>&lt;svg width="24" height="24"&gt;&lt;use href="#nib-search"/&gt;&lt;/svg&gt;
+
+&lt;!-- or from a file on the same origin --&gt;
+&lt;svg width="24" height="24"&gt;&lt;use href="/sprite.svg#nib-search"/&gt;&lt;/svg&gt;</code></pre>
+
+    <h2 id="react">React</h2>
+    <p>Copy React on any icon gives you a ready component that forwards props, so size, colour and class names work as usual.</p>
+<pre><code>export function HydroIcon(props) {
+  return (
+    &lt;svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" strokeWidth={1.5}
+         strokeLinecap="round" strokeLinejoin="round" {...props}&gt;
+      &lt;path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5zM13 9l-3 5h4l-3 5"/&gt;
+    &lt;/svg&gt;
+  );
+}
+
+&lt;HydroIcon width={20} height={20} className="text-blue-600" /&gt;</code></pre>
+
+    <h2 id="styling">Styling</h2>
+    <h3>Colour</h3>
+    <p>Set <code>color</code> on the icon or any parent. Never set <code>fill</code>, the icons are outlines.</p>
+    <h3>Size</h3>
+    <p>Icons are drawn for 24px and stay crisp at 16, 20, 32 and 48. Below 16px some detailed icons lose clarity; pick a simpler one.</p>
+    <h3>Stroke</h3>
+    <p>1.5 is the house weight. When you scale an icon up, keep the line looking the same with <code>vector-effect: non-scaling-stroke</code>, or lower the stroke width in proportion.</p>
+<pre><code>.icon { width: 20px; height: 20px; color: #1F3FD1; }
+.icon * { vector-effect: non-scaling-stroke; }</code></pre>
+
+    <h2 id="guidelines">Guidelines</h2>
+    <p>These are the rules every Nib icon follows. Use them if you draw your own icons to sit alongside the set.</p>
+    <div class="specs">
+      <div class="spec"><b>24</b><span>px grid</span></div>
+      <div class="spec"><b>2</b><span>px live padding</span></div>
+      <div class="spec"><b>1.5</b><span>px stroke</span></div>
+      <div class="spec"><b>Round</b><span>caps and joins</span></div>
+    </div>
+    <div class="dodont">
+      <div class="dd do"><h4>Do</h4><p>Keep shapes inside the 20px live area. Use one continuous stroke where you can. Simplify until the icon reads at 16px.</p></div>
+      <div class="dd dont"><h4>Don't</h4><p>Mix filled and outline styles. Add text inside an icon. Use stroke weights other than 1.5. Trace or auto convert photos.</p></div>
+    </div>
+
+    <h2 id="contributing">Contributing</h2>
+    <p>Ideas and fixes are welcome. Open an issue with the icon name you want and where you would use it. To submit a drawing, add an SVG to <code>icons/</code> following the guidelines, add it to <code>icons.json</code>, then run <code>python scripts/build.py</code> to rebuild the site data, sprite and zip.</p>
+
+    <h2 id="changelog">Changelog</h2>
+    <h3>1.0.0 · November 2026</h3>
+    <ul>
+      <li>First public release: 2,194 icons in 42 categories.</li>
+      <li>Polish pass on 52 icons that read poorly at small sizes.</li>
+      <li>Website with search, category filter, adjustable size and stroke, and copy as SVG or React.</li>
+      <li>SVG sprite, zip download and CDN links.</li>
+    </ul>
+
+    <h2 id="license">License</h2>
+    <p>MIT. Use Nib in personal and commercial work, no attribution required, though it is always appreciated.</p>
+  </article>
+</div>
+
+<footer><div class="wrap"><span>Nib icons · MIT licensed · drawn by hand in Paper</span><span><a href="./">Icons</a> · <a href="https://github.com/mrigankad/nib-icons">GitHub</a></span></div></footer>
+<div class="toast" id="toast"></div>
+<script>
+document.querySelectorAll("pre").forEach(p=>{const b=document.createElement("button");b.className="copy";b.textContent="Copy";b.onclick=async()=>{try{await navigator.clipboard.writeText(p.innerText.replace(/Copy$/,"").trim());b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1200)}catch{}};p.appendChild(b)});
+</script>
+</body>
+</html>

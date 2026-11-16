@@ -185,3 +185,9 @@
 .is-dark pre .copy{background:#1A1A1A;border-color:#2A2A2A;color:#D4D4D4}
 pre .copy{background:#16224D}
 .is-dark pre::-webkit-scrollbar-thumb{background:#2A2A2A;border-color:#0E0E0E}
+
+/* fixes */
+.is-dark .cta .btn.outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.cta .btn.outline:hover{background:rgba(255,255,255,.1)}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.seg button{padding:6px 2px;font-size:12px}

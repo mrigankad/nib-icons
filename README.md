@@ -1,26 +1,160 @@
-<p align="center"><img src="assets/favicon.svg" width="72" alt="Nib logo"></p>
+<div align="center">
 
-<h1 align="center">Nib</h1>
-<p align="center">2,196 open source line icons. One 1.5 stroke on a 24 grid. MIT.</p>
-<p align="center"><a href="https://mrigankad.github.io/nib-icons/">Browse the icons</a> · <a href="https://mrigankad.github.io/nib-icons/docs.html">Docs</a> · <a href="dist/nib-icons.zip">Download zip</a></p>
+<a href="https://mrigankad.github.io/nib-icons/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme/banner-dark.png">
+    <img alt="nib: 2,196 open source line icons, drawn with care" src="assets/readme/banner-light.png" width="100%">
+  </picture>
+</a>
 
-## Use
+<p>
+  <a href="https://mrigankad.github.io/nib-icons/"><img alt="Website" src="https://img.shields.io/badge/website-nib--icons-1F3FD1?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/nib-icons"><img alt="npm" src="https://img.shields.io/npm/v/nib-icons?style=flat-square&color=1F3FD1&label=nib-icons"></a>
+  <a href="https://www.npmjs.com/package/nib-icons-react"><img alt="npm react" src="https://img.shields.io/npm/v/nib-icons-react?style=flat-square&color=1F3FD1&label=nib-icons-react"></a>
+  <img alt="Icons" src="https://img.shields.io/badge/icons-2,196-0F1A3D?style=flat-square">
+  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-0F1A3D?style=flat-square"></a>
+</p>
 
-- **Copy** any icon as SVG or React from the website.
-- **Link** from the CDN: `https://cdn.jsdelivr.net/gh/mrigankad/nib-icons@main/icons/<name>.svg`
-- **Sprite**: `dist/sprite.svg`, symbols named `nib-<name>`.
-- **Files**: everything lives in [`icons/`](icons).
+<h3>
+  <a href="https://mrigankad.github.io/nib-icons/">Browse icons</a>
+  ·
+  <a href="https://mrigankad.github.io/nib-icons/docs.html">Docs</a>
+  ·
+  <a href="https://mrigankad.github.io/nib-icons/#examples">Examples</a>
+  ·
+  <a href="dist/nib-icons.zip">Download</a>
+</h3>
 
-Icons use `currentColor`, so they inherit text colour.
+<br>
 
-## Build
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme/preview-dark.svg">
+  <img alt="A grid of Nib icons" src="assets/readme/preview-light.svg" width="100%">
+</picture>
 
+</div>
+
+<br>
+
+## Why Nib
+
+- **2,196 icons, 42 categories.** Interface, devices, money, health, travel, food, culture and festivals, AI and more.
+- **One grid, one stroke.** Every icon is drawn on a 24px grid with a single 1.5 stroke and round joins, so any two sit happily side by side.
+- **Plain SVG.** No fonts, no runtime, no dependencies. Icons use `currentColor` and inherit your text colour.
+- **Every format.** SVG files, an SVG sprite, React components, a Figma sheet, and copy as SVG, animated SVG, React, PNG or CSS from the website.
+- **Free forever.** MIT licensed for personal and commercial work. No attribution needed.
+
+## Quick start
+
+### React
+
+```bash
+npm i nib-icons-react
 ```
-python scripts/build.py
+
+```jsx
+import { NibHome, NibSearch, NibBell } from 'nib-icons-react';
+
+export function Toolbar() {
+  return (
+    <nav>
+      <NibHome />
+      <NibSearch size={20} color="#1F3FD1" />
+      <NibBell strokeWidth={1.75} aria-hidden="true" />
+    </nav>
+  );
+}
 ```
 
-Regenerates `data/icons.json`, `dist/sprite.svg` and `dist/nib-icons.zip` from `icons.json`.
+Components are named `Nib` plus the icon name in PascalCase (`arrow-up` becomes `NibArrowUp`). They forward refs, accept every SVG prop, and are tree-shakable.
+
+### SVG files
+
+```bash
+npm i nib-icons
+```
+
+```js
+import homeUrl from 'nib-icons/icons/home.svg';
+```
+
+Or skip the install and link straight from the CDN:
+
+```html
+<img src="https://cdn.jsdelivr.net/gh/mrigankad/nib-icons@main/icons/home.svg" width="24" height="24" alt="">
+```
+
+### SVG sprite
+
+Inline [`dist/sprite.svg`](dist/sprite.svg) once, then reference any icon by id:
+
+```html
+<svg width="24" height="24"><use href="#nib-home"/></svg>
+```
+
+### Figma and design tools
+
+Drag [`dist/nib-figma.svg`](dist/nib-figma.svg) into Figma, Sketch or Penpot. Every icon arrives as its own named layer, grouped by category.
+
+## Styling
+
+```css
+.icon { width: 20px; height: 20px; color: #1F3FD1; }
+```
+
+| Prop / attribute | Default | Notes |
+|---|---|---|
+| `size` (React) | `24` | Drawn for 24px. Crisp at 16, 20, 32 and 48. |
+| `color` | `currentColor` | Never set `fill`, the icons are outlines. |
+| `strokeWidth` | `1.5` | The house weight. Use `vector-effect: non-scaling-stroke` when scaling up. |
+
+Decorative icons should get `aria-hidden="true"`. Icons that carry meaning on their own need `role="img"` and an `aria-label`.
+
+## Categories
+
+<details>
+<summary>All 42 categories</summary>
+
+<br>
+
+| | | |
+|---|---|---|
+| Arrows · 60 | Chevrons & Carets · 30 | Interface Basics · 52 |
+| Navigation & Layout · 50 | Actions & Editing · 59 | Text & Typography · 50 |
+| Files & Folders · 60 | Communication · 60 | People & Users · 60 |
+| Emotion & Faces · 40 | Media & Playback · 60 | Camera & Images · 40 |
+| Design & Creative · 60 | Development & Code · 60 | Devices & Hardware · 60 |
+| Connectivity & Network · 50 | Security & Privacy · 50 | Alerts & Status · 40 |
+| Time & Calendar · 40 | Commerce & Shopping · 50 | Finance & Money · 55 |
+| Business & Office · 60 | Charts & Data · 40 | Weather · 45 |
+| Nature & Environment · 60 | Animals · 60 | Food & Drink · 80 |
+| Travel & Places · 65 | Transport & Vehicles · 50 | Health & Medical · 60 |
+| Sports & Fitness · 50 | Education & Learning · 50 | Home & Living · 50 |
+| Tools & Construction · 50 | Industry & Energy · 50 | AI & Technology · 50 |
+| Social · 50 | Gaming & Fun · 40 | Culture & Festivals · 50 |
+| Fashion & Beauty · 50 | Shapes & Symbols · 50 | Accessibility & Settings · 50 |
+
+</details>
+
+## Design rules
+
+| 24px grid | 2px live padding | 1.5 stroke | Round caps and joins |
+|:-:|:-:|:-:|:-:|
+
+Keep shapes inside the 20px live area, use one continuous stroke where you can, and simplify until the icon reads at 16px. Don't mix filled and outline styles, put text inside icons, or trace photos.
+
+## Contributing
+
+Want an icon that isn't here? [Open an issue](https://github.com/mrigankad/nib-icons/issues/new?labels=icon%20request&title=Icon%20request%3A%20) with the name and where you'd use it.
+
+To build from source:
+
+```bash
+python scripts/build.py          # SVG files, sprite, zip, site data
+python scripts/build_react.py    # React components
+python scripts/build_extras.py   # Figma sheet and README images
+```
 
 ## License
 
-MIT
+[MIT](LICENSE). Use Nib in anything you like.

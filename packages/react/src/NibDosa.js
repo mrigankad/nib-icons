@@ -4,11 +4,11 @@ export const NibDosa = forwardRef(function NibDosa({ size = 24, color = 'current
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('ellipse', { cx: "12", cy: "18", rx: "10", ry: "3", fill: "none" }),
-    h('path', { d: "M3.5 14.5L16.8 7", fill: "none" }),
-    h('path', { d: "M3.5 14.5l16-3.2", fill: "none" }),
-    h('ellipse', { cx: "18.3", cy: "9.2", rx: "1.5", ry: "2.9", transform: "rotate(-30 18.3 9.2)", fill: "none" }),
-    h('path', { d: "M2.5 4h6a3 3 0 0 1-6 0z", fill: "none" })
+    h('path', { d: "M2 17.5c0 1.9 4.5 3.5 10 3.5s10-1.6 10-3.5", fill: "none" }),
+    h('path', { d: "M3.5 15.5L17 6a2.6 2.6 0 0 1 3.4 3.8L7 18.5", fill: "none" }),
+    h('path', { d: "M3.5 15.5c-.6 1.6 1.4 3.4 3.5 3", fill: "none" }),
+    h('path', { d: "M8.5 12l2 2.5M12 9.5l2 2.5", fill: "none" }),
+    h('circle', { cx: "18.5", cy: "16", r: "2", fill: "none" })
   );
 });
 

@@ -71,12 +71,14 @@
 &lt;HydroIcon width={20} height={20} className="text-blue-600" /&gt;</code></pre>
 
     <h2 id="react-pack">React component pack</h2>
-    <p>Every icon also ships as a ready React component in <code>packages/react/src</code>, one file per icon, named <code>Nib</code> plus the icon name in PascalCase. Each one forwards refs and takes <code>size</code>, <code>color</code> and <code>strokeWidth</code>. There is no build step, they use plain <code>createElement</code>.</p>
-    <p>The pack is not on npm yet. For now, copy the files you need from <a href="https://github.com/mrigankad/nib-icons/tree/main/packages/react/src" style="color:var(--cobalt)">GitHub</a>.</p>
-<pre><code>// copy packages/react/src/NibHome.js into your project
-import { NibHome } from './NibHome.js';
+    <p>Every icon ships as a tree-shakable React component in the <code>nib-icons-react</code> package. Components are named <code>Nib</code> plus the icon name in PascalCase, forward refs and take <code>size</code>, <code>color</code> and <code>strokeWidth</code>.</p>
+<pre><code>npm i nib-icons-react
 
-&lt;NibHome size={20} color="#1F3FD1" strokeWidth={1.75} /&gt;</code></pre>
+import { NibHome, NibSearch } from 'nib-icons-react';
+
+&lt;NibHome /&gt;
+&lt;NibSearch size={20} color="#1F3FD1" strokeWidth={1.75} /&gt;</code></pre>
+    <p>Prefer plain files? <code>npm i nib-icons</code> gives you every SVG, the sprite and <code>icons.json</code>.</p>
 
     <h2 id="vue">Vue</h2>
     <p>Nib is not on npm, so inline the SVG markup in a small component. This one takes <code>size</code> and <code>color</code> props. Swap the path for any icon from the <code>icons/</code> folder.</p>
@@ -134,6 +136,7 @@ document.querySelectorAll("[data-nib]").forEach(async (el) =&gt; {
 
     <h2 id="figma">Figma and design tools</h2>
     <p>Nib is plain SVG, so it works in any design tool.</p>
+    <p><strong>Fastest:</strong> drag <a href="dist/nib-figma.svg" style="color:var(--cobalt)">nib-figma.svg</a> onto your canvas. All 2,196 icons arrive as named layers, grouped by category.</p>
     <ul>
       <li><strong>Drag and drop.</strong> Drag one or more SVG files from the <code>icons/</code> folder onto your canvas.</li>
       <li><strong>Import the zip.</strong> Download <a href="dist/nib-icons.zip" style="color:var(--cobalt)">nib-icons.zip</a>, unzip it, then select all the files and drop them in together.</li>

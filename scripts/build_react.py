@@ -73,8 +73,8 @@ export default {p};
         "peerDependencies": {"react": ">=17"}, "license": "MIT",
         "repository": {"type": "git", "url": "git+https://github.com/mrigankad/nib-icons.git", "directory": "packages/react"},
     }
-    (OUT / "package.json").write_text(json.dumps(pkg, indent=2) + "\n", encoding="utf-8", newline="\n")
-    (OUT / "README.md").write_text(f"""# nib-icons-react
+    if not (OUT / "package.json").exists(): (OUT / "package.json").write_text(json.dumps(pkg, indent=2) + "\n", encoding="utf-8", newline="\n")
+    if not (OUT / "README.md").exists(): (OUT / "README.md").write_text(f"""# nib-icons-react
 
 {len(names)} Nib icons as React components. No JSX, no build step (plain `React.createElement`).
 

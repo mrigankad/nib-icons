@@ -149,7 +149,7 @@
 .is-dark .m-dash .lg i{background:#3D5BFF}
 
 /* ===== dark palette v3: neutral black + brand cobalt ===== */
-.is-dark{--ink:#F2F2F2;--muted:#A3A3A3;--faint:#6B6B6B;--cobalt:#3B5BFF;--cobalt-soft:rgba(31,63,209,.18);--paper:#000000;--card:#0E0E0E;--well:#080808;--line:#222222;--line-2:#1A1A1A}
+:root.is-dark{--ink:#F2F2F2;--muted:#A3A3A3;--faint:#6B6B6B;--cobalt:#3B5BFF;--cobalt-soft:rgba(31,63,209,.18);--paper:#000000;--card:#0E0E0E;--well:#080808;--line:#222222;--line-2:#1A1A1A}
 .is-dark body{background:#000}
 .is-dark .nav{background:rgba(0,0,0,.75);border-color:#1A1A1A}
 .is-dark .hero2::before{display:none}

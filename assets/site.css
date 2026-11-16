@@ -1,7 +1,7 @@
 :root{
   --ink:#0F1A3D;--muted:#5A6178;--faint:#8A8FA3;--cobalt:#1F3FD1;--cobalt-soft:#EEF0FB;
   --paper:#FAFAF7;--card:#FFFFFF;--line:#E6E6E0;--line-2:#ECECE6;--well:#F4F4EF;
-  --serif:'Instrument Serif',Georgia,serif;--sans:'Geist',system-ui,sans-serif;
+  --serif:'Inter',system-ui,sans-serif;--sans:'Inter',system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
   --ink:#ECEEF7;--muted:#A2A8BE;--faint:#7A8099;--cobalt:#7D93FF;--cobalt-soft:#1B2347;
@@ -100,3 +100,12 @@ pre .copy{position:absolute;top:10px;right:10px;border:1px solid #2A3766;backgro
 .dd h4{margin:0 0 6px;font-size:14px}
 .dd.do h4{color:#1F8A4C}.dd.dont h4{color:#C2410C}
 @media (max-width:860px){.docs{grid-template-columns:1fr;gap:24px}.toc{position:static;flex-direction:row;flex-wrap:wrap;gap:14px}.dodont{grid-template-columns:1fr}}
+/* Inter tuning */
+body{font-feature-settings:"cv11","ss01"}
+.brand{font-weight:600;font-size:24px;letter-spacing:-.03em}
+.hero h1{font-weight:600;letter-spacing:-.045em;line-height:1}
+.detail h2{font-weight:600;font-size:26px;letter-spacing:-.02em}
+.prose h1{font-weight:600;font-size:52px;letter-spacing:-.04em}
+.prose h2{font-weight:600;font-size:30px;letter-spacing:-.03em}
+.spec b{font-weight:600;font-size:28px;letter-spacing:-.03em}
+.more[hidden]{display:none}

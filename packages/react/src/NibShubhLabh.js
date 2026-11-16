@@ -4,11 +4,10 @@ export const NibShubhLabh = forwardRef(function NibShubhLabh({ size = 24, color 
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('path', { d: "M12 3v18M3 12h18M12 3h6M12 21H6M3 12V6M21 12v6", fill: "none" }),
-    h('circle', { cx: "7.5", cy: "7.5", r: ".8", fill: "none" }),
-    h('circle', { cx: "16.5", cy: "7.5", r: ".8", fill: "none" }),
-    h('circle', { cx: "7.5", cy: "16.5", r: ".8", fill: "none" }),
-    h('circle', { cx: "16.5", cy: "16.5", r: ".8", fill: "none" })
+    h('path', { d: "M9 10h6M9.5 10c-3 1.5-4 4-4 6a6.5 6.5 0 0 0 13 0c0-2-1-4.5-4-6M7 16h10", fill: "none" }),
+    h('circle', { cx: "12", cy: "6.5", r: "2", fill: "none" }),
+    h('path', { d: "M10.5 8C8.5 7.5 7 6 6.5 4M13.5 8c2-.5 3.5-2 4-4", fill: "none" }),
+    h('path', { d: "M3 12h.01M21 12h.01M3 15h.01M21 15h.01", fill: "none", strokeWidth: "2.2" })
   );
 });
 

@@ -1720,7 +1720,7 @@ export const NibTableDining: NibIcon;
 export const NibLamp: NibIcon;
 export const NibLampFloor: NibIcon;
 export const NibChandelier: NibIcon;
-export const NibLightBulb: NibIcon;
+export const NibLightBulbAlt: NibIcon;
 export const NibCeilingFan: NibIcon;
 export const NibAirConditioner: NibIcon;
 export const NibHeater: NibIcon;

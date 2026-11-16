@@ -1715,7 +1715,7 @@ export { NibTableDining } from './NibTableDining.js';
 export { NibLamp } from './NibLamp.js';
 export { NibLampFloor } from './NibLampFloor.js';
 export { NibChandelier } from './NibChandelier.js';
-export { NibLightBulb } from './NibLightBulb.js';
+export { NibLightBulbAlt } from './NibLightBulbAlt.js';
 export { NibCeilingFan } from './NibCeilingFan.js';
 export { NibAirConditioner } from './NibAirConditioner.js';
 export { NibHeater } from './NibHeater.js';

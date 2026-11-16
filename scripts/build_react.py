@@ -39,9 +39,9 @@ def main():
     names, seen = [], set()
     for ic in icons:
         p = pascal(ic["name"])
-        if p in seen:
-            raise SystemExit("duplicate " + p)
-        seen.add(p)
+        while p.lower() in seen:  # case-insensitive filesystems (Windows, macOS) would merge the files
+            p += "Alt"
+        seen.add(p.lower())
         names.append(p)
         kids = children(ic["svg"])
         body = ",\n    ".join(kids)

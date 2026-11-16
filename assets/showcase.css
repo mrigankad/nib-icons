@@ -182,3 +182,6 @@
 .is-dark .phone2.dk{background:#000;border-color:#222}
 .is-dark pre{background:#0E0E0E;border:1px solid #222}
 .is-dark ::-webkit-scrollbar-thumb{border-color:#000}
+.is-dark pre .copy{background:#1A1A1A;border-color:#2A2A2A;color:#D4D4D4}
+pre .copy{background:#16224D}
+.is-dark pre::-webkit-scrollbar-thumb{background:#2A2A2A;border-color:#0E0E0E}

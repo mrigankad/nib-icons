@@ -180,5 +180,24 @@
       cat = b.dataset.cat; limit = PAGE; renderCats(); renderGrid();
       $("#icons").scrollIntoView({ behavior: "smooth" });
     });
+    // ----- examples gallery -----
+    const ex = $("#ex");
+    if (ex) {
+      ex.querySelectorAll(".ei").forEach((el) => { el.title = el.dataset.i; });
+      ex.addEventListener("click", (e) => {
+        const tab = e.target.closest("[data-t]");
+        if (tab) {
+          ex.querySelectorAll("[data-t]").forEach((b) => b.classList.toggle("on", b === tab));
+          ex.querySelectorAll(".exp").forEach((p) => p.classList.toggle("on", p.dataset.tab === tab.dataset.t));
+          return;
+        }
+        const c = e.target.closest("[data-c]");
+        if (c) { ex.style.setProperty("--acc", c.dataset.c); ex.querySelectorAll("[data-c]").forEach((b) => b.classList.toggle("on", b === c)); return; }
+        if (e.target.closest("#exdark")) { const d = ex.classList.toggle("dk"); $("#exdark").classList.toggle("on", d); return; }
+        const t = e.target.closest(".tg"); if (t) { t.classList.toggle("on"); return; }
+        const ic = e.target.closest(".ei"); if (ic) copy(ic.dataset.i, "Icon name");
+      });
+      $("#exsw").addEventListener("input", (e) => ex.style.setProperty("--ex-sw", e.target.value));
+    }
   }
 })();

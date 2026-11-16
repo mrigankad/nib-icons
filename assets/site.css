@@ -244,3 +244,11 @@ pre::-webkit-scrollbar-thumb{background:#2A3766;border-color:#0F1A3D}
 .fam:hover .ic svg:nth-child(2)>*{animation-delay:.08s}.fam:hover .ic svg:nth-child(3)>*{animation-delay:.16s}.fam:hover .ic svg:nth-child(4)>*{animation-delay:.24s}.fam:hover .ic svg:nth-child(5)>*{animation-delay:.32s}.fam:hover .ic svg:nth-child(6)>*{animation-delay:.4s}
 .seg{flex-wrap:wrap}
 @media (prefers-reduced-motion:reduce){.tile svg>*,.preview svg>*,.pgrid svg>*,.rel svg>*,.fam svg>*{animation:none!important;stroke-dasharray:none!important}}
+/* works with */
+.works{text-align:center;margin:-56px auto 112px}
+.works p{font-size:14px;color:var(--faint);margin:0 0 20px}
+.works ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px}
+.works li{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;transition:color .2s}
+.works li svg{width:22px;height:22px;transition:color .2s}
+.works li:hover svg{color:var(--bc)}
+.works li:hover{color:var(--ink)}

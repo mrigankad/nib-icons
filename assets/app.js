@@ -139,7 +139,7 @@
     sel = data.find((i) => i.n === hash) || data.find((i) => i.n === "hydro") || data[0];
     renderCats(); renderGrid(); renderDetail();
     showcase(data);
-    if (location.hash === "#icons" || data.some((i) => i.n === hash)) requestAnimationFrame(() => $("#icons").scrollIntoView());
+    if (location.hash === "#icons" || data.some((i) => i.n === hash)) { const go = () => $("#icons").scrollIntoView(); requestAnimationFrame(go); addEventListener("load", go, { once: true }); }
   });
 
   // ----- showcase sections -----

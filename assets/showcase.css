@@ -191,3 +191,4 @@ pre .copy{background:#16224D}
 .cta .btn.outline:hover{background:rgba(255,255,255,.1)}
 .seg{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
 .seg button{padding:6px 2px;font-size:12px}
+#icons,#examples{scroll-margin-top:84px}

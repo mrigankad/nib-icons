@@ -4,9 +4,11 @@ export const NibKhanda = forwardRef(function NibKhanda({ size = 24, color = 'cur
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('path', { d: "M12 2l1 3v9l-1 2-1-2V5z", fill: "none" }),
-    h('circle', { cx: "12", cy: "11", r: "4.5", fill: "none" }),
-    h('path', { d: "M7 4c-4 4-4 12 2 16M17 4c4 4 4 12-2 16M9 20l-2 2M15 20l2 2", fill: "none" })
+    h('path', { d: "M12 2L13.5 5.5V14H10.5V5.5Z", fill: "none" }),
+    h('path', { d: "M12 14V17.5", fill: "none" }),
+    h('circle', { cx: "12", cy: "9.5", r: "4.5", fill: "none" }),
+    h('path', { d: "M4.5 3C4 12 8 18 15 21.5", fill: "none" }),
+    h('path', { d: "M19.5 3C20 12 16 18 9 21.5", fill: "none" })
   );
 });
 

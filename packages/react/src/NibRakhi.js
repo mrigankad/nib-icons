@@ -4,9 +4,12 @@ export const NibRakhi = forwardRef(function NibRakhi({ size = 24, color = 'curre
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('path', { d: "M2 12h7M15 12h7", fill: "none" }),
-    h('circle', { cx: "12", cy: "12", r: "3", fill: "none" }),
-    h('path', { d: "M12 9a3 3 0 0 1 0-6 3 3 0 0 1 0 6M12 15a3 3 0 0 0 0 6 3 3 0 0 0 0-6M9 12a3 3 0 0 0-3-3M15 12a3 3 0 0 1 3 3", fill: "none" })
+    h('path', { d: "M2.5 12H6.5M17.5 12H21.5", fill: "none" }),
+    h('circle', { cx: "12", cy: "8.5", r: "2", fill: "none" }),
+    h('circle', { cx: "12", cy: "15.5", r: "2", fill: "none" }),
+    h('circle', { cx: "8.5", cy: "12", r: "2", fill: "none" }),
+    h('circle', { cx: "15.5", cy: "12", r: "2", fill: "none" }),
+    h('circle', { cx: "12", cy: "12", r: "1", fill: "none" })
   );
 });
 

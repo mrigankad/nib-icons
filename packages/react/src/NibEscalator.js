@@ -4,8 +4,10 @@ export const NibEscalator = forwardRef(function NibEscalator({ size = 24, color 
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('path', { d: "M3 20h4.500v-4.500H12V11h4.500V6.500H21", fill: "none" }),
-    h('path', { d: "M3 11 10 4", fill: "none" })
+    h('path', { d: "M3 21h4v-4h4v-4h4v-4h4V6.5", fill: "none" }),
+    h('path', { d: "M3 21h0", fill: "none" }),
+    h('path', { d: "M5 11l6-6", fill: "none" }),
+    h('path', { d: "M7 5h4v4", fill: "none" })
   );
 });
 

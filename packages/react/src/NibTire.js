@@ -4,11 +4,10 @@ export const NibTire = forwardRef(function NibTire({ size = 24, color = 'current
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('circle', { cx: "12", cy: "12", r: "9.500", fill: "none" }),
-    h('circle', { cx: "12", cy: "12", r: "5.500", fill: "none" }),
-    h('circle', { cx: "12", cy: "12", r: "1.200", fill: "none" }),
-    h('path', { d: "M12 6.500v4.300M12 13.200v4.300M6.500 12h4.300M13.200 12h4.300", fill: "none" }),
-    h('path', { d: "M12 2.500v3M12 18.500v3M2.500 12h3M18.500 12h3", fill: "none" })
+    h('circle', { cx: "12", cy: "12", r: "8.5", fill: "none" }),
+    h('circle', { cx: "12", cy: "12", r: "4.5", fill: "none" }),
+    h('circle', { cx: "12", cy: "12", r: "1", fill: "none" }),
+    h('path', { d: "M20.5 12H22M2 12H3.5M12 3.5V2M12 22v-1.5M18.01 5.99l1.06-1.06M4.93 19.07l1.06-1.06M18.01 18.01l1.06 1.06M4.93 4.93l1.06 1.06", fill: "none" })
   );
 });
 

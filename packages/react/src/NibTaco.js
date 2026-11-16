@@ -4,8 +4,11 @@ export const NibTaco = forwardRef(function NibTaco({ size = 24, color = 'current
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('path', { d: "M3 18a9 9 0 0 1 18 0z", fill: "none" }),
-    h('path', { d: "M6.5 14c1-2.5 3-4 5.5-4s4.500 1.500 5.500 4", fill: "none" })
+    h('path', { d: "M2.5 19.5a9.5 9.5 0 0 1 19 0z", fill: "none" }),
+    h('path', { d: "M7 19.5a5 5 0 0 1 10 0", fill: "none" }),
+    h('circle', { cx: "7.5", cy: "8.3", r: "1.6", fill: "none" }),
+    h('circle', { cx: "12", cy: "6.3", r: "1.6", fill: "none" }),
+    h('circle', { cx: "16.5", cy: "8.3", r: "1.6", fill: "none" })
   );
 });
 

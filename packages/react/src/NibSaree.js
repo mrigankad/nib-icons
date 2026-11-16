@@ -4,8 +4,10 @@ export const NibSaree = forwardRef(function NibSaree({ size = 24, color = 'curre
   return h(
     'svg',
     { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
-    h('circle', { cx: "12", cy: "4", r: "2", fill: "none" }),
-    h('path', { d: "M9 7h6l2 6-3 1 1 8H7l2-9-2-1zM15 7l-6 9M8 22l2-3", fill: "none" })
+    h('path', { d: "M8 3H16C16 8 17.5 13 19 21H5C6.5 13 8 8 8 3Z", fill: "none" }),
+    h('path', { d: "M8 3Q14 8 17.5 16", fill: "none" }),
+    h('path', { d: "M5.6 18H18.4", fill: "none" }),
+    h('path', { d: "M9 14L8.5 18M12 12V18M14.5 14.5L14.8 18", fill: "none" })
   );
 });
 

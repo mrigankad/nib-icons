@@ -56,15 +56,34 @@
     grid.style.setProperty("--sw", sw());
     grid.innerHTML = list.length
       ? list.slice(0, limit).map((ic) => `<button class="tile${sel && sel.n === ic.n ? " on" : ""}" data-n="${ic.n}" title="${ic.n}">${svg(ic)}<small>${ic.n}</small></button>`).join("")
-      : `<div class="empty">No icons match “${query}”. Try a shorter word.</div>`;
+      : `<div class="empty">No icons match “${query}”. Try a shorter word, or <a href="https://github.com/mrigankad/nib-icons/issues/new?title=Icon%20request%3A%20${encodeURIComponent(query)}&labels=icon%20request" style="color:var(--cobalt)">request it on GitHub</a>.</div>`;
     $("#more").hidden = list.length <= limit;
   }
 
+  let fmt = "svg";
+  const FMTS = { svg: "SVG", jsx: "React", png: "PNG", css: "CSS" };
+  const dataUri = (ic) => "data:image/svg+xml;utf8," + encodeURIComponent(fileSvg(ic).replace("currentColor", "#0F1A3D"));
+  const css = (ic) => `.nib-${ic.n} {\n  width: 24px; height: 24px;\n  background-color: currentColor;\n  -webkit-mask: url("${dataUri(ic)}") no-repeat center / contain;\n  mask: url("${dataUri(ic)}") no-repeat center / contain;\n}`;
+  async function copyPng(ic) {
+    const ink = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#0F1A3D";
+    const img = new Image();
+    img.src = "data:image/svg+xml;utf8," + encodeURIComponent(fileSvg(ic).replace('width="24" height="24"', 'width="256" height="256"').replace("currentColor", ink));
+    await img.decode();
+    const c = document.createElement("canvas"); c.width = c.height = 256; c.getContext("2d").drawImage(img, 0, 0);
+    c.toBlob(async (blob) => {
+      try { await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]); toast("PNG copied"); }
+      catch { const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = ic.n + ".png"; a.click(); toast("PNG downloaded"); }
+    });
+  }
   function detailHtml(ic) {
+    const related = all.filter((i) => i.c === ic.c && i.n !== ic.n).slice(0, 12);
     return `<div class="preview">${svg(ic)}</div>
+      <div class="sizes">${[16, 20, 24, 32, 48].map((s) => `<span title="${s}px">${svg(ic, `width="${s}" height="${s}" style="width:${s}px;height:${s}px"`)}</span>`).join("")}</div>
       <div><h2>${ic.n}</h2><div class="sub">${ic.c}</div></div>
-      <div class="row"><button class="act primary" data-do="svg">Copy SVG</button><button class="act" data-do="dl">Download</button></div>
-      <div class="row"><button class="act" data-do="jsx">Copy React</button><button class="act" data-do="name">Copy name</button></div>`;
+      <div class="seg">${Object.entries(FMTS).map(([k, v]) => `<button data-fmt="${k}" class="${k === fmt ? "on" : ""}">${v}</button>`).join("")}</div>
+      <div class="row"><button class="act primary" data-do="copy">Copy ${FMTS[fmt]}</button><button class="act" data-do="dl">Download</button></div>
+      <button class="link" data-do="name">Copy name</button>
+      <div class="rel"><span>Related</span><div>${related.map((r) => `<button data-rel="${r.n}" title="${r.n}">${svg(r)}</button>`).join("")}</div></div>`;
   }
   function renderDetail() {
     if (!sel) return;
@@ -73,9 +92,17 @@
   }
 
   function onAction(e) {
+    const f = e.target.closest("[data-fmt]"); if (f) { fmt = f.dataset.fmt; renderDetail(); return; }
+    const r = e.target.closest("[data-rel]"); if (r) { pickIcon(r.dataset.rel); return; }
     const b = e.target.closest("[data-do]"); if (!b || !sel) return;
-    ({ svg: () => copy(fileSvg(sel), "SVG"), dl: () => download(sel), jsx: () => copy(jsx(sel), "React component"),
-       name: () => copy(sel.n, "Name"), close: () => $("#sheet").classList.remove("open") })[b.dataset.do]();
+    const doCopy = () => ({ svg: () => copy(fileSvg(sel), "SVG"), jsx: () => copy(jsx(sel), "React component"), png: () => copyPng(sel), css: () => copy(css(sel), "CSS") })[fmt]();
+    ({ copy: doCopy, dl: () => download(sel), name: () => copy(sel.n, "Name"), close: () => $("#sheet").classList.remove("open") })[b.dataset.do]();
+  }
+  function pickIcon(n) {
+    sel = all.find((i) => i.n === n); if (!sel) return;
+    document.querySelectorAll(".tile.on").forEach((t) => t.classList.remove("on"));
+    const tile = document.querySelector(`.tile[data-n="${n}"]`); if (tile) tile.classList.add("on");
+    renderDetail(); history.replaceState(null, "", "#" + n);
   }
 
   $("#cats").addEventListener("click", (e) => { const b = e.target.closest(".cat"); if (!b) return; cat = b.dataset.cat; limit = PAGE; renderCats(); renderGrid(); });
@@ -92,6 +119,13 @@
   let t; $("#q").addEventListener("input", (e) => { clearTimeout(t); t = setTimeout(() => { query = e.target.value; limit = PAGE; renderGrid(); }, 80); });
   $("#sz").addEventListener("input", renderGrid);
   $("#sw").addEventListener("input", () => { $("#swv").textContent = sw(); renderGrid(); renderDetail(); });
+  // arrow keys move through the grid when a tile has focus
+  $("#grid").addEventListener("keydown", (e) => {
+    const tiles = [...document.querySelectorAll("#grid .tile")]; const i = tiles.indexOf(document.activeElement); if (i < 0) return;
+    const cols = Math.max(1, Math.round($("#grid").clientWidth / tiles[0].offsetWidth));
+    const d = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: cols, ArrowUp: -cols }[e.key]; if (!d) return;
+    e.preventDefault(); const nx = tiles[Math.min(tiles.length - 1, Math.max(0, i + d))]; nx.focus(); pickIcon(nx.dataset.n);
+  });
   addEventListener("keydown", (e) => { if (e.key === "/" && document.activeElement !== $("#q")) { e.preventDefault(); $("#q").focus(); } if (e.key === "Escape") $("#sheet").classList.remove("open"); });
 
   fetch("data/icons.json").then((r) => r.json()).then((data) => {

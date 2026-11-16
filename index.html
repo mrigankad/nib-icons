@@ -11,7 +11,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=7">
+<link rel="stylesheet" href="assets/site.css?v=8">
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -111,8 +111,13 @@
 
 <div class="sheet" id="sheet"></div>
 <div class="toast" id="toast"></div>
-<footer><div class="wrap"><span>Nib icons · MIT licensed</span><span><a href="docs.html">Docs</a> · <a href="https://github.com/mrigankad/nib-icons">GitHub</a></span></div></footer>
-<script src="assets/app.js?v=6"></script>
+<footer class="foot"><div class="wrap">
+  <div class="fb"><a class="brand" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="var(--cobalt)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l6.5 7.5L12 22 5.5 9.5z"/><path d="M12 22v-9"/><circle cx="12" cy="11" r="1.6"/></svg>Nib</a><p>2,196 open source line icons. One grid, one stroke, MIT.</p></div>
+  <div class="fc"><b>Icons</b><a href="#icons">Browse</a><a href="dist/nib-icons.zip" download>Download zip</a><a href="dist/sprite.svg">SVG sprite</a></div>
+  <div class="fc"><b>Docs</b><a href="docs.html#start">Getting started</a><a href="docs.html#react-pack">React</a><a href="docs.html#guidelines">Guidelines</a><a href="docs.html#faq">FAQ</a></div>
+  <div class="fc"><b>Project</b><a href="https://github.com/mrigankad/nib-icons">GitHub</a><a href="https://github.com/mrigankad/nib-icons/issues/new?labels=icon%20request&title=Icon%20request%3A%20">Request an icon</a><a href="docs.html#changelog">Changelog</a><a href="docs.html#license">License</a></div>
+</div></footer>
+<script src="assets/app.js?v=7"></script>
 <script>(()=>{const r=document.documentElement;try{const t=localStorage.getItem("nib-theme");if(t)r.dataset.theme=t}catch(e){}const b=document.getElementById("themer");b&&b.addEventListener("click",()=>{const d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.dataset.theme=d?"light":"dark";try{localStorage.setItem("nib-theme",r.dataset.theme)}catch(e){}})})()</script>
 </body>
 </html>

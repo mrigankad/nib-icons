@@ -119,7 +119,7 @@
     if (wall) wall.innerHTML = Array.from({ length: 9 }, () => { const row = pick(26).map((ic) => raw(ic, 28)).join(""); return `<div class="r">${row}${row}</div>`; }).join("");
 
     // playground
-    const colours = ["#0F1A3D", "#1F3FD1", "#E2513B", "#1F8A4C", "#D97706", "#9333EA"];
+    const colours = ["var(--ink)", "#1F3FD1", "#E2513B", "#1F8A4C", "#D97706", "#9333EA"];
     let pc = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim();
     $("#swatches").innerHTML = colours.map((c, i) => `<button style="background:${c}" data-c="${c}" class="${i === 0 ? "on" : ""}" aria-label="Colour ${c}"></button>`).join("");
     const nice = ["globe", "compass", "cloud", "droplet", "calendar", "layers", "lifebuoy", "settings-sliders", "analytics", "heart", "bell", "mail", "folder", "lock", "camera", "music", "map-pin", "cyclone", "sun", "home", "search"];

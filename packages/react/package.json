@@ -1,6 +1,6 @@
 {
   "name": "@mrigankad/nib-icons-react",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Nib icons as tree-shakable React components. 2,196 line icons, one 1.5 stroke, MIT.",
   "type": "module",
   "main": "src/index.js",

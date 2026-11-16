@@ -203,3 +203,13 @@ body{font-feature-settings:"cv11","ss01"}
 html,body{overflow-x:clip}
 @media (max-width:720px){.hero2{padding:96px 0 72px}.lede{font-size:17px}.block{padding-bottom:80px}.stats{margin-bottom:80px}}
 @media (max-width:1148px){.stats{margin-left:24px;margin-right:24px}}
+/* custom scrollbar */
+:root{--sb:color-mix(in srgb,var(--ink) 22%,transparent);--sb-h:var(--cobalt)}
+html{scrollbar-color:var(--sb) transparent;scrollbar-width:thin}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--sb);border-radius:999px;border:3px solid var(--paper)}
+::-webkit-scrollbar-thumb:hover{background:var(--sb-h)}
+.cats::-webkit-scrollbar{width:6px;height:6px}
+.cats::-webkit-scrollbar-thumb{border-width:1px}
+pre::-webkit-scrollbar-thumb{background:#2A3766;border-color:#0F1A3D}

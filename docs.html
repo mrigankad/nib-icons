@@ -71,14 +71,14 @@
 &lt;HydroIcon width={20} height={20} className="text-blue-600" /&gt;</code></pre>
 
     <h2 id="react-pack">React component pack</h2>
-    <p>Every icon ships as a tree-shakable React component in the <code>nib-icons-react</code> package. Components are named <code>Nib</code> plus the icon name in PascalCase, forward refs and take <code>size</code>, <code>color</code> and <code>strokeWidth</code>.</p>
-<pre><code>npm i nib-icons-react
+    <p>Every icon ships as a tree-shakable React component in the <code>@mrigankad/nib-icons-react</code> package. Components are named <code>Nib</code> plus the icon name in PascalCase, forward refs and take <code>size</code>, <code>color</code> and <code>strokeWidth</code>.</p>
+<pre><code>npm i @mrigankad/nib-icons-react
 
-import { NibHome, NibSearch } from 'nib-icons-react';
+import { NibHome, NibSearch } from '@mrigankad/nib-icons-react';
 
 &lt;NibHome /&gt;
 &lt;NibSearch size={20} color="#1F3FD1" strokeWidth={1.75} /&gt;</code></pre>
-    <p>Prefer plain files? <code>npm i nib-icons</code> gives you every SVG, the sprite and <code>icons.json</code>.</p>
+    <p>Prefer plain files? <code>npm i @mrigankad/nib-icons</code> gives you every SVG, the sprite and <code>icons.json</code>.</p>
 
     <h2 id="vue">Vue</h2>
     <p>Nib is not on npm, so inline the SVG markup in a small component. This one takes <code>size</code> and <code>color</code> props. Swap the path for any icon from the <code>icons/</code> folder.</p>

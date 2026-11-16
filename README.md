@@ -9,8 +9,8 @@
 
 <p>
   <a href="https://mrigankad.github.io/nib-icons/"><img alt="Website" src="https://img.shields.io/badge/website-nib--icons-1F3FD1?style=flat-square"></a>
-  <a href="https://www.npmjs.com/package/nib-icons"><img alt="npm" src="https://img.shields.io/npm/v/nib-icons?style=flat-square&color=1F3FD1&label=nib-icons"></a>
-  <a href="https://www.npmjs.com/package/nib-icons-react"><img alt="npm react" src="https://img.shields.io/npm/v/nib-icons-react?style=flat-square&color=1F3FD1&label=nib-icons-react"></a>
+  <a href="https://www.npmjs.com/package/@mrigankad/nib-icons"><img alt="npm" src="https://img.shields.io/npm/v/@mrigankad/nib-icons?style=flat-square&color=1F3FD1&label=nib-icons"></a>
+  <a href="https://www.npmjs.com/package/@mrigankad/nib-icons-react"><img alt="npm react" src="https://img.shields.io/npm/v/@mrigankad/nib-icons-react?style=flat-square&color=1F3FD1&label=nib-icons-react"></a>
   <img alt="Icons" src="https://img.shields.io/badge/icons-2,196-0F1A3D?style=flat-square">
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-0F1A3D?style=flat-square"></a>
 </p>
@@ -49,11 +49,11 @@
 ### React
 
 ```bash
-npm i nib-icons-react
+npm i @mrigankad/nib-icons-react
 ```
 
 ```jsx
-import { NibHome, NibSearch, NibBell } from 'nib-icons-react';
+import { NibHome, NibSearch, NibBell } from '@mrigankad/nib-icons-react';
 
 export function Toolbar() {
   return (
@@ -71,11 +71,11 @@ Components are named `Nib` plus the icon name in PascalCase (`arrow-up` becomes 
 ### SVG files
 
 ```bash
-npm i nib-icons
+npm i @mrigankad/nib-icons
 ```
 
 ```js
-import homeUrl from 'nib-icons/icons/home.svg';
+import homeUrl from '@mrigankad/nib-icons/icons/home.svg';
 ```
 
 Or skip the install and link straight from the CDN:

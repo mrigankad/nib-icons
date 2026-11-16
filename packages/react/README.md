@@ -1,13 +1,13 @@
-# nib-icons-react
+# @mrigankad/nib-icons-react
 
 [Nib](https://mrigankad.github.io/nib-icons/) icons as React components. 2,196 line icons on a 24px grid with one 1.5 stroke. MIT.
 
 ```bash
-npm i nib-icons-react
+npm i @mrigankad/nib-icons-react
 ```
 
 ```jsx
-import { NibHome, NibSearch, NibBell } from 'nib-icons-react';
+import { NibHome, NibSearch, NibBell } from '@mrigankad/nib-icons-react';
 
 <NibHome />
 <NibSearch size={20} color="#1F3FD1" />

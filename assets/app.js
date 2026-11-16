@@ -4,8 +4,10 @@
   let all = [], cats = [], cat = "All icons", query = "", limit = PAGE, sel = null;
   const sw = () => $("#sw").value;
 
+  const plen = (inner) => inner.replace(/<(path|circle|rect|line|polyline|polygon|ellipse)/g, '<$1 pathLength="1"');
   const svg = (ic, attrs = "") =>
-    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw()}" stroke-linecap="round" stroke-linejoin="round" ${attrs}>${ic.s}</svg>`;
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw()}" stroke-linecap="round" stroke-linejoin="round" ${attrs}>${plen(ic.s)}</svg>`;
+  const animSvg = (ic) => `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw()}" stroke-linecap="round" stroke-linejoin="round"><style>*{stroke-dasharray:1;stroke-dashoffset:1;animation:d .8s cubic-bezier(.65,0,.35,1) forwards}*:nth-child(2){animation-delay:.12s}*:nth-child(3){animation-delay:.24s}*:nth-child(n+4){animation-delay:.36s}@keyframes d{to{stroke-dashoffset:0}}@media (prefers-reduced-motion:reduce){*{animation:none;stroke-dashoffset:0}}</style>${plen(ic.s)}</svg>`;
   const fileSvg = (ic) =>
     `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw()}" stroke-linecap="round" stroke-linejoin="round">${ic.s}</svg>`;
   const pascal = (n) => n.replace(/(^|-)(\w)/g, (_, __, c) => c.toUpperCase()).replace(/^(\d)/, "Icon$1");
@@ -61,7 +63,7 @@
   }
 
   let fmt = "svg";
-  const FMTS = { svg: "SVG", jsx: "React", png: "PNG", css: "CSS" };
+  const FMTS = { svg: "SVG", anim: "Animated", jsx: "React", png: "PNG", css: "CSS" };
   const dataUri = (ic) => "data:image/svg+xml;utf8," + encodeURIComponent(fileSvg(ic).replace("currentColor", "#0F1A3D"));
   const css = (ic) => `.nib-${ic.n} {\n  width: 24px; height: 24px;\n  background-color: currentColor;\n  -webkit-mask: url("${dataUri(ic)}") no-repeat center / contain;\n  mask: url("${dataUri(ic)}") no-repeat center / contain;\n}`;
   async function copyPng(ic) {
@@ -95,7 +97,7 @@
     const f = e.target.closest("[data-fmt]"); if (f) { fmt = f.dataset.fmt; renderDetail(); return; }
     const r = e.target.closest("[data-rel]"); if (r) { pickIcon(r.dataset.rel); return; }
     const b = e.target.closest("[data-do]"); if (!b || !sel) return;
-    const doCopy = () => ({ svg: () => copy(fileSvg(sel), "SVG"), jsx: () => copy(jsx(sel), "React component"), png: () => copyPng(sel), css: () => copy(css(sel), "CSS") })[fmt]();
+    const doCopy = () => ({ svg: () => copy(fileSvg(sel), "SVG"), anim: () => copy(animSvg(sel), "Animated SVG"), jsx: () => copy(jsx(sel), "React component"), png: () => copyPng(sel), css: () => copy(css(sel), "CSS") })[fmt]();
     ({ copy: doCopy, dl: () => download(sel), name: () => copy(sel.n, "Name"), close: () => $("#sheet").classList.remove("open") })[b.dataset.do]();
   }
   function pickIcon(n) {
@@ -143,7 +145,7 @@
   // ----- showcase sections -----
   function showcase(data) {
     const by = new Map(data.map((i) => [i.n, i]));
-    const raw = (ic, w = 24) => `<svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ic.s}</svg>`;
+    const raw = (ic, w = 24) => `<svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${plen(ic.s)}</svg>`;
     const pick = (n, pool = data) => { const a = pool.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, n); };
 
     document.querySelectorAll("[data-i]").forEach((el) => { const ic = by.get(el.dataset.i); if (ic) el.innerHTML = raw(ic); });
@@ -161,7 +163,7 @@
     const paintPlay = () => {
       const w = $("#psz").value, s = $("#pst").value;
       $("#pstv").textContent = s; $("#pszv").textContent = w + "px";
-      $("#pgrid").innerHTML = set.map((ic) => `<div title="${ic.n}" style="color:${pc}"><svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="${s}" stroke-linecap="round" stroke-linejoin="round">${ic.s}</svg></div>`).join("");
+      $("#pgrid").innerHTML = set.map((ic) => `<div title="${ic.n}" style="color:${pc}"><svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="${s}" stroke-linecap="round" stroke-linejoin="round">${plen(ic.s)}</svg></div>`).join("");
     };
     $("#swatches").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; pc = b.dataset.c; document.querySelectorAll("#swatches .on").forEach((x) => x.classList.remove("on")); b.classList.add("on"); paintPlay(); });
     $("#pst").addEventListener("input", paintPlay); $("#psz").addEventListener("input", paintPlay);

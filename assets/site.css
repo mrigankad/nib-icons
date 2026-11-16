@@ -235,3 +235,12 @@ pre::-webkit-scrollbar-thumb{background:#2A3766;border-color:#0F1A3D}
 .fc b{font-weight:500;color:var(--ink);margin-bottom:4px}
 .fc a{color:var(--muted)}.fc a:hover{color:var(--ink)}
 @media (max-width:720px){.foot .wrap{grid-template-columns:1fr 1fr}.foot .fb{grid-column:1/-1}}
+/* draw-on animation */
+@keyframes nibdraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.tile:hover svg>*,.preview svg>*,.pgrid div:hover svg>*,.rel button:hover svg>*,.fam:hover .ic svg>*{stroke-dasharray:1;animation:nibdraw .8s cubic-bezier(.65,0,.35,1) both}
+.tile:hover svg>*:nth-child(2),.preview svg>*:nth-child(2),.pgrid div:hover svg>*:nth-child(2),.fam:hover .ic svg>*:nth-child(2){animation-delay:.1s}
+.tile:hover svg>*:nth-child(3),.preview svg>*:nth-child(3),.pgrid div:hover svg>*:nth-child(3),.fam:hover .ic svg>*:nth-child(3){animation-delay:.2s}
+.tile:hover svg>*:nth-child(n+4),.preview svg>*:nth-child(n+4),.pgrid div:hover svg>*:nth-child(n+4),.fam:hover .ic svg>*:nth-child(n+4){animation-delay:.3s}
+.fam:hover .ic svg:nth-child(2)>*{animation-delay:.08s}.fam:hover .ic svg:nth-child(3)>*{animation-delay:.16s}.fam:hover .ic svg:nth-child(4)>*{animation-delay:.24s}.fam:hover .ic svg:nth-child(5)>*{animation-delay:.32s}.fam:hover .ic svg:nth-child(6)>*{animation-delay:.4s}
+.seg{flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){.tile svg>*,.preview svg>*,.pgrid svg>*,.rel svg>*,.fam svg>*{animation:none!important;stroke-dasharray:none!important}}

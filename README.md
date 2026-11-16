@@ -38,13 +38,11 @@
 
 ## Why Nib
 
-- **2,196 icons, 42 categories.** Interface, devices, money, health, travel, food, culture and festivals, AI and more.
-- **One grid, one stroke.** Every icon is drawn on a 24px grid with a single 1.5 stroke and round joins, so any two sit happily side by side.
-- **Plain SVG.** No fonts, no runtime, no dependencies. Icons use `currentColor` and inherit your text colour.
-- **Every format.** SVG files, an SVG sprite, React components, a Figma sheet, and copy as SVG, animated SVG, React, PNG or CSS from the website.
-- **Free forever.** MIT licensed for personal and commercial work. No attribution needed.
+<img alt="2,196 icons in 42 categories. One 24px grid and one 1.5 stroke. Plain SVG with currentColor. Tree-shakable React components. A Figma sheet with every icon as a named layer. MIT licensed, free forever." src="assets/readme/features.png" width="100%">
 
 ## Quick start
+
+<img alt="npm i @mrigankad/nib-icons-react  ·  npm i @mrigankad/nib-icons" src="assets/readme/install.png" width="100%">
 
 ### React
 

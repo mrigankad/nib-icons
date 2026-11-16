@@ -1,0 +1,11 @@
+import { createElement as h, forwardRef } from 'react';
+
+export const NibFlowerRose = forwardRef(function NibFlowerRose({ size = 24, color = 'currentColor', strokeWidth = 1.5, ...props }, ref) {
+  return h(
+    'svg',
+    { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    h('path', { d: "M7 5c0 4 2 7 5 7s5-3 5-7c-2 1-3 0-5-2-2 2-3 3-5 2zM12 6.5c-1 1-1.5 2.5 0 3.5M12 12v10M12 17c2-2 4-2 5-1-1 2-3 2-5 1z", fill: "none" })
+  );
+});
+
+export default NibFlowerRose;

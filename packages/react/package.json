@@ -1,0 +1,23 @@
+{
+  "name": "nib-icons-react",
+  "version": "1.1.0",
+  "description": "Nib icon set as React components",
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "src",
+    "index.d.ts"
+  ],
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrigankad/nib-icons.git",
+    "directory": "packages/react"
+  }
+}

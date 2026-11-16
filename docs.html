@@ -8,7 +8,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=6">
+<link rel="stylesheet" href="assets/site.css?v=7">
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -19,7 +19,7 @@
 <div class="wrap docs">
   <nav class="toc" aria-label="On this page">
     <span class="h">On this page</span>
-    <a href="#start">Getting started</a><a href="#svg">Plain SVG</a><a href="#cdn">CDN links</a><a href="#sprite">SVG sprite</a><a href="#react">React</a><a href="#styling">Styling</a><a href="#guidelines">Guidelines</a><a href="#contributing">Contributing</a><a href="#changelog">Changelog</a><a href="#license">License</a>
+    <a href="#start">Getting started</a><a href="#svg">Plain SVG</a><a href="#cdn">CDN links</a><a href="#sprite">SVG sprite</a><a href="#react">React</a><a href="#react-pack">React pack</a><a href="#vue">Vue</a><a href="#svelte">Svelte</a><a href="#vanilla">Vanilla JS</a><a href="#figma">Figma</a><a href="#styling">Styling</a><a href="#accessibility">Accessibility</a><a href="#small-screens">Small screens</a><a href="#guidelines">Guidelines</a><a href="#contributing">Contributing</a><a href="#faq">FAQ</a><a href="#changelog">Changelog</a><a href="#license">License</a>
   </nav>
 
   <article class="prose">
@@ -70,6 +70,77 @@
 
 &lt;HydroIcon width={20} height={20} className="text-blue-600" /&gt;</code></pre>
 
+    <h2 id="react-pack">React component pack</h2>
+    <p>Every icon also ships as a ready React component in <code>packages/react/src</code>, one file per icon, named <code>Nib</code> plus the icon name in PascalCase. Each one forwards refs and takes <code>size</code>, <code>color</code> and <code>strokeWidth</code>. There is no build step, they use plain <code>createElement</code>.</p>
+    <p>The pack is not on npm yet. For now, copy the files you need from <a href="https://github.com/mrigankad/nib-icons/tree/main/packages/react/src" style="color:var(--cobalt)">GitHub</a>.</p>
+<pre><code>// copy packages/react/src/NibHome.js into your project
+import { NibHome } from './NibHome.js';
+
+&lt;NibHome size={20} color="#1F3FD1" strokeWidth={1.75} /&gt;</code></pre>
+
+    <h2 id="vue">Vue</h2>
+    <p>Nib is not on npm, so inline the SVG markup in a small component. This one takes <code>size</code> and <code>color</code> props. Swap the path for any icon from the <code>icons/</code> folder.</p>
+<pre><code>&lt;!-- NibIcon.vue --&gt;
+&lt;script setup&gt;
+defineProps({
+  size: { type: [Number, String], default: 24 },
+  color: { type: String, default: "currentColor" },
+  strokeWidth: { type: [Number, String], default: 1.5 },
+});
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;svg xmlns="http://www.w3.org/2000/svg" :width="size" :height="size" viewBox="0 0 24 24"
+       fill="none" :stroke="color" :stroke-width="strokeWidth"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+    &lt;path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5zM13 9l-3 5h4l-3 5"/&gt;
+  &lt;/svg&gt;
+&lt;/template&gt;
+
+&lt;!-- usage --&gt;
+&lt;NibIcon :size="20" color="#1F3FD1" /&gt;</code></pre>
+
+    <h2 id="svelte">Svelte</h2>
+    <p>The same idea works in Svelte. Paste the paths from the SVG file and expose props for size and colour.</p>
+<pre><code>&lt;!-- NibIcon.svelte --&gt;
+&lt;script&gt;
+  export let size = 24;
+  export let color = "currentColor";
+  export let strokeWidth = 1.5;
+&lt;/script&gt;
+
+&lt;svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
+     fill="none" stroke={color} stroke-width={strokeWidth}
+     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+  &lt;path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5zM13 9l-3 5h4l-3 5"/&gt;
+&lt;/svg&gt;
+
+&lt;!-- usage --&gt;
+&lt;NibIcon size={20} color="#1F3FD1" /&gt;</code></pre>
+
+    <h2 id="vanilla">Vanilla JS (fetch and inject)</h2>
+    <p>Fetch the file from the CDN and put the markup in the page. The icon then follows your text colour.</p>
+<pre><code>&lt;span class="icon" data-nib="search"&gt;&lt;/span&gt;
+
+&lt;script&gt;
+const CDN = "https://cdn.jsdelivr.net/gh/mrigankad/nib-icons@main/icons/";
+
+document.querySelectorAll("[data-nib]").forEach(async (el) =&gt; {
+  const res = await fetch(CDN + el.dataset.nib + ".svg");
+  if (res.ok) el.innerHTML = await res.text();
+});
+&lt;/script&gt;</code></pre>
+    <p>Fetched files are cached by the browser, but each icon is still one request. For many icons on one page, use the <a href="#sprite" style="color:var(--cobalt)">sprite</a> instead.</p>
+
+    <h2 id="figma">Figma and design tools</h2>
+    <p>Nib is plain SVG, so it works in any design tool.</p>
+    <ul>
+      <li><strong>Drag and drop.</strong> Drag one or more SVG files from the <code>icons/</code> folder onto your canvas.</li>
+      <li><strong>Import the zip.</strong> Download <a href="dist/nib-icons.zip" style="color:var(--cobalt)">nib-icons.zip</a>, unzip it, then select all the files and drop them in together.</li>
+      <li><strong>Copy and paste.</strong> Press Copy SVG on the <a href="./" style="color:var(--cobalt)">icon page</a> and paste straight into Figma, Sketch or Penpot.</li>
+    </ul>
+    <p>Each icon arrives as a 24 by 24 frame with strokes, so you can change colour and weight right away. Keep the stroke at 1.5 to match the set.</p>
+
     <h2 id="styling">Styling</h2>
     <h3>Colour</h3>
     <p>Set <code>color</code> on the icon or any parent. Never set <code>fill</code>, the icons are outlines.</p>
@@ -79,6 +150,37 @@
     <p>1.5 is the house weight. When you scale an icon up, keep the line looking the same with <code>vector-effect: non-scaling-stroke</code>, or lower the stroke width in proportion.</p>
 <pre><code>.icon { width: 20px; height: 20px; color: #1F3FD1; }
 .icon * { vector-effect: non-scaling-stroke; }</code></pre>
+
+    <h2 id="accessibility">Accessibility</h2>
+    <p>Most icons are decoration. Some carry meaning. Treat them differently.</p>
+    <h3>Decorative icons</h3>
+    <p>If a visible text label sits next to the icon, hide the icon from screen readers.</p>
+<pre><code>&lt;button&gt;
+  &lt;svg width="20" height="20" aria-hidden="true"&gt;&lt;use href="#nib-search"/&gt;&lt;/svg&gt;
+  Search
+&lt;/button&gt;</code></pre>
+    <h3>Meaningful icons</h3>
+    <p>If the icon is the only thing telling the user what something does, give it a name. Use <code>role="img"</code> with <code>aria-label</code>, or add a <code>&lt;title&gt;</code>.</p>
+<pre><code>&lt;button type="button"&gt;
+  &lt;svg width="20" height="20" role="img" aria-label="Search"&gt;&lt;use href="#nib-search"/&gt;&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-labelledby="t1"&gt;
+  &lt;title id="t1"&gt;Search&lt;/title&gt;
+  ...
+&lt;/svg&gt;</code></pre>
+    <p>With an image tag, use the <code>alt</code> attribute. Leave it empty for decoration.</p>
+
+    <h2 id="small-screens">Sizing for small screens</h2>
+    <p>Phones need bigger targets, not necessarily bigger icons.</p>
+    <ul>
+      <li>Keep the icon at 20 or 24px and make the tappable area at least 44 by 44px with padding.</li>
+      <li>Avoid going below 16px. Pick a simpler icon if you must.</li>
+      <li>Use whole pixel sizes so the 1.5 stroke stays crisp. Sizes of 16, 20, 24 and 32 work well.</li>
+      <li>Use <code>rem</code> or <code>em</code> so icons scale with the user's font size.</li>
+    </ul>
+<pre><code>.icon-btn { display: inline-grid; place-items: center; width: 44px; height: 44px; }
+.icon-btn svg { width: 1.5rem; height: 1.5rem; }</code></pre>
 
     <h2 id="guidelines">Guidelines</h2>
     <p>These are the rules every Nib icon follows. Use them if you draw your own icons to sit alongside the set.</p>
@@ -95,6 +197,16 @@
 
     <h2 id="contributing">Contributing</h2>
     <p>Ideas and fixes are welcome. Open an issue with the icon name you want and where you would use it. To submit a drawing, add an SVG to <code>icons/</code> following the guidelines, add it to <code>icons.json</code>, then run <code>python scripts/build.py</code> to rebuild the site data, sprite and zip.</p>
+
+    <h2 id="faq">FAQ</h2>
+    <h3>Can I use it commercially?</h3>
+    <p>Yes. Nib is MIT licensed, so you can use it in personal and commercial work.</p>
+    <h3>Do I need attribution?</h3>
+    <p>No. A credit is always appreciated, but it is never required.</p>
+    <h3>Can I request an icon?</h3>
+    <p>Yes. <a href="https://github.com/mrigankad/nib-icons/issues" style="color:var(--cobalt)">Open a GitHub issue</a> with the icon name and where you would use it.</p>
+    <h3>Why outline only?</h3>
+    <p>One style keeps the set consistent. Outlines also take any colour through <code>currentColor</code>, scale cleanly and stay light. Mixing filled and outline icons makes a UI look uneven.</p>
 
     <h2 id="changelog">Changelog</h2>
     <h3>1.1.0 · November 2026</h3>

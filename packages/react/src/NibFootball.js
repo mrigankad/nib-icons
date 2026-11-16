@@ -1,0 +1,11 @@
+import { createElement as h, forwardRef } from 'react';
+
+export const NibFootball = forwardRef(function NibFootball({ size = 24, color = 'currentColor', strokeWidth = 1.5, ...props }, ref) {
+  return h(
+    'svg',
+    { ref, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 24 24', width: size, height: size, fill: 'none', stroke: color, strokeWidth, strokeLinecap: 'round', strokeLinejoin: 'round', ...props },
+    h('path', { d: "M4 20C1 17 2 10 6 6s11-5 14-2 2 10-2 14-11 5-14 2zM9 15l6-6M10 11l3 3M12 9l3 3M3.5 13.5l7 7M13.5 3.5l7 7", fill: "none" })
+  );
+});
+
+export default NibFootball;

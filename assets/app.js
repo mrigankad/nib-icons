@@ -87,5 +87,46 @@
     const hash = decodeURIComponent(location.hash.slice(1));
     sel = data.find((i) => i.n === hash) || data.find((i) => i.n === "hydro") || data[0];
     renderCats(); renderGrid(); renderDetail();
+    showcase(data);
   });
+
+  // ----- showcase sections -----
+  function showcase(data) {
+    const by = new Map(data.map((i) => [i.n, i]));
+    const raw = (ic, w = 24) => `<svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ic.s}</svg>`;
+    const pick = (n, pool = data) => { const a = pool.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, n); };
+
+    document.querySelectorAll("[data-i]").forEach((el) => { const ic = by.get(el.dataset.i); if (ic) el.innerHTML = raw(ic); });
+
+    // drifting icon wall (each row duplicated for a seamless loop)
+    const wall = $("#wall");
+    if (wall) wall.innerHTML = Array.from({ length: 9 }, () => { const row = pick(26).map((ic) => raw(ic, 28)).join(""); return `<div class="r">${row}${row}</div>`; }).join("");
+
+    // playground
+    const colours = ["#0F1A3D", "#1F3FD1", "#E2513B", "#1F8A4C", "#D97706", "#9333EA"];
+    let pc = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim();
+    $("#swatches").innerHTML = colours.map((c, i) => `<button style="background:${c}" data-c="${c}" class="${i === 0 ? "on" : ""}" aria-label="Colour ${c}"></button>`).join("");
+    const nice = ["globe", "star", "cloud", "droplet", "calendar", "layers", "lifebuoy", "settings-sliders", "analytics", "heart", "bell", "mail", "folder", "lock", "camera", "music", "map-pin", "cyclone", "sun", "home", "search"];
+    let set = nice.map((n) => by.get(n)).filter(Boolean);
+    const paintPlay = () => {
+      const w = $("#psz").value, s = $("#pst").value;
+      $("#pstv").textContent = s; $("#pszv").textContent = w + "px";
+      $("#pgrid").innerHTML = set.map((ic) => `<div title="${ic.n}" style="color:${pc}"><svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="${s}" stroke-linecap="round" stroke-linejoin="round">${ic.s}</svg></div>`).join("");
+    };
+    $("#swatches").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; pc = b.dataset.c; document.querySelectorAll("#swatches .on").forEach((x) => x.classList.remove("on")); b.classList.add("on"); paintPlay(); });
+    $("#pst").addEventListener("input", paintPlay); $("#psz").addEventListener("input", paintPlay);
+    $("#shuffle").addEventListener("click", () => { set = pick(21); paintPlay(); });
+    paintPlay();
+
+    // category families
+    $("#fams").innerHTML = cats.map((c) => {
+      const icons = data.filter((i) => i.c === c.name).slice(0, 6).map((ic) => raw(ic, 22)).join("");
+      return `<button class="fam" data-cat="${c.name}"><div class="ic">${icons}</div><b>${c.name}</b><span>${c.count} icons</span></button>`;
+    }).join("");
+    $("#fams").addEventListener("click", (e) => {
+      const b = e.target.closest(".fam"); if (!b) return;
+      cat = b.dataset.cat; limit = PAGE; renderCats(); renderGrid();
+      $("#icons").scrollIntoView({ behavior: "smooth" });
+    });
+  }
 })();

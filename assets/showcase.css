@@ -148,31 +148,37 @@
 .ex.dk{--acc:#6E86FF}
 .is-dark .m-dash .lg i{background:#3D5BFF}
 
-/* ===== dark palette v2 ===== */
-.is-dark{--ink:#EDEFF7;--muted:#A3A9BF;--faint:#6F7590;--cobalt:#8EA2FF;--cobalt-soft:rgba(142,162,255,.12);--paper:#08090F;--card:#10121B;--well:#0C0E16;--line:#1E2130;--line-2:#181B28}
-.is-dark body{background:radial-gradient(1200px 600px at 50% -200px,rgba(110,134,255,.10),transparent 70%) var(--paper)}
-.is-dark .nav{background:rgba(8,9,15,.72);border-color:var(--line)}
-.is-dark .hero2::before{background:radial-gradient(closest-side,rgba(110,134,255,.28),transparent)}
-.is-dark .wall{opacity:.10}
-.is-dark .btn.blue{background:#6E86FF;color:#08090F;font-weight:500}
-.is-dark .btn.ghost{background:transparent;border-color:#2A2E42}
-.is-dark .news{background:var(--card);border-color:var(--line)}
-.is-dark .news em{background:#6E86FF;color:#08090F}
-.is-dark .stats b.c,.is-dark .eyebrow{color:#9DB0FF}
-.is-dark .tile{background:var(--card);border-color:var(--line-2)}
-.is-dark .tile:hover{border-color:#3A3F5A;background:#141725}
-.is-dark .tile.on{background:rgba(142,162,255,.12);border-color:#8EA2FF;color:#C9D3FF}
-.is-dark .cat.on{background:rgba(142,162,255,.12);color:#C9D3FF}
-.is-dark .act.primary,.is-dark .paybtn{background:#6E86FF;border-color:#6E86FF;color:#08090F}
-.is-dark .seg button.on{background:#1A1D2B}
-.is-dark .preview{background:#0C0E16}
-.is-dark .cta{background:linear-gradient(135deg,#2B3FAE 0%,#141A3D 55%,#10121B 100%);border:1px solid #2A2E42}
-.is-dark .cta p{color:#B4BCE0}
-.is-dark .feats img{filter:brightness(.88) saturate(.95)}
-.is-dark .fam:hover{border-color:#8EA2FF}
-.is-dark .sw button{border-color:var(--card)}
-.is-dark ::-webkit-scrollbar-thumb{border-color:var(--paper)}
-.is-dark .ex.dk{--e-bg:#10121B;--e-ln:#1E2130;--e-well:#0C0E16;--e-soft:rgba(142,162,255,.12);--e-ink:#EDEFF7;--e-mut:#A3A9BF;--e-fnt:#6F7590}
-.is-dark .ex.dk{--acc:#8EA2FF}
-.is-dark .m-mob{background:#0C0E16}
-.is-dark pre{background:#0C0E16;border:1px solid var(--line)}
+/* ===== dark palette v3: neutral black + brand cobalt ===== */
+.is-dark{--ink:#F2F2F2;--muted:#A3A3A3;--faint:#6B6B6B;--cobalt:#3B5BFF;--cobalt-soft:rgba(31,63,209,.18);--paper:#000000;--card:#0E0E0E;--well:#080808;--line:#222222;--line-2:#1A1A1A}
+.is-dark body{background:#000}
+.is-dark .nav{background:rgba(0,0,0,.75);border-color:#1A1A1A}
+.is-dark .hero2::before{display:none}
+.is-dark .wall{opacity:.12}
+.is-dark .btn{background:#F2F2F2;color:#000}
+.is-dark .btn.blue{background:#1F3FD1;color:#fff;font-weight:500}
+.is-dark .btn.ghost{background:transparent;color:#F2F2F2;border-color:#2A2A2A}
+.is-dark .pill{background:#F2F2F2;color:#000!important}
+.is-dark .news{background:#0E0E0E;border-color:#222}
+.is-dark .news em{background:#1F3FD1;color:#fff}
+.is-dark .stats b.c,.is-dark .eyebrow{color:#3B5BFF}
+.is-dark .tile{background:#0E0E0E;border-color:#1A1A1A}
+.is-dark .tile:hover{border-color:#333;background:#141414}
+.is-dark .tile.on{background:rgba(31,63,209,.18);border-color:#1F3FD1;color:#F2F2F2}
+.is-dark .cat.on{background:rgba(31,63,209,.18);color:#F2F2F2}
+.is-dark .act.primary,.is-dark .paybtn{background:#1F3FD1;border-color:#1F3FD1;color:#fff}
+.is-dark .seg button.on{background:#1A1A1A}
+.is-dark .preview{background:#080808}
+.is-dark .cta{background:#1F3FD1;border:0}
+.is-dark .cta p{color:#D6DCFF}
+.is-dark .cta .btn.light{background:#fff;color:#000}
+.is-dark .cta .btn.outline{border-color:rgba(255,255,255,.4);color:#fff}
+.is-dark .feats img{filter:none}
+.is-dark .fam:hover{border-color:#1F3FD1}
+.is-dark .stats,.is-dark .play,.is-dark .fam,.is-dark .detail,.is-dark .feats article{box-shadow:none}
+.is-dark .ex.dk{--e-bg:#0E0E0E;--e-ln:#222222;--e-well:#080808;--e-soft:rgba(31,63,209,.18);--e-ink:#F2F2F2;--e-mut:#A3A3A3;--e-fnt:#6B6B6B;--acc:#3B5BFF}
+.is-dark .m-dash .lg i{background:#1F3FD1}
+.is-dark .m-mob{background:#080808}
+.is-dark .phone2:not(.dk){border-color:#222}
+.is-dark .phone2.dk{background:#000;border-color:#222}
+.is-dark pre{background:#0E0E0E;border:1px solid #222}
+.is-dark ::-webkit-scrollbar-thumb{border-color:#000}

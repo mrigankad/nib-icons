@@ -103,6 +103,7 @@
     sel = data.find((i) => i.n === hash) || data.find((i) => i.n === "hydro") || data[0];
     renderCats(); renderGrid(); renderDetail();
     showcase(data);
+    if (location.hash === "#icons" || data.some((i) => i.n === hash)) requestAnimationFrame(() => $("#icons").scrollIntoView());
   });
 
   // ----- showcase sections -----

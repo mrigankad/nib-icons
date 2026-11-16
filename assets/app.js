@@ -106,7 +106,7 @@
     const colours = ["#0F1A3D", "#1F3FD1", "#E2513B", "#1F8A4C", "#D97706", "#9333EA"];
     let pc = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim();
     $("#swatches").innerHTML = colours.map((c, i) => `<button style="background:${c}" data-c="${c}" class="${i === 0 ? "on" : ""}" aria-label="Colour ${c}"></button>`).join("");
-    const nice = ["globe", "star", "cloud", "droplet", "calendar", "layers", "lifebuoy", "settings-sliders", "analytics", "heart", "bell", "mail", "folder", "lock", "camera", "music", "map-pin", "cyclone", "sun", "home", "search"];
+    const nice = ["globe", "compass", "cloud", "droplet", "calendar", "layers", "lifebuoy", "settings-sliders", "analytics", "heart", "bell", "mail", "folder", "lock", "camera", "music", "map-pin", "cyclone", "sun", "home", "search"];
     let set = nice.map((n) => by.get(n)).filter(Boolean);
     const paintPlay = () => {
       const w = $("#psz").value, s = $("#pst").value;

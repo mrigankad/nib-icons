@@ -147,3 +147,32 @@
 .is-dark .phone2:not(.dk){border-color:#2A3460}
 .ex.dk{--acc:#6E86FF}
 .is-dark .m-dash .lg i{background:#3D5BFF}
+
+/* ===== dark palette v2 ===== */
+.is-dark{--ink:#EDEFF7;--muted:#A3A9BF;--faint:#6F7590;--cobalt:#8EA2FF;--cobalt-soft:rgba(142,162,255,.12);--paper:#08090F;--card:#10121B;--well:#0C0E16;--line:#1E2130;--line-2:#181B28}
+.is-dark body{background:radial-gradient(1200px 600px at 50% -200px,rgba(110,134,255,.10),transparent 70%) var(--paper)}
+.is-dark .nav{background:rgba(8,9,15,.72);border-color:var(--line)}
+.is-dark .hero2::before{background:radial-gradient(closest-side,rgba(110,134,255,.28),transparent)}
+.is-dark .wall{opacity:.10}
+.is-dark .btn.blue{background:#6E86FF;color:#08090F;font-weight:500}
+.is-dark .btn.ghost{background:transparent;border-color:#2A2E42}
+.is-dark .news{background:var(--card);border-color:var(--line)}
+.is-dark .news em{background:#6E86FF;color:#08090F}
+.is-dark .stats b.c,.is-dark .eyebrow{color:#9DB0FF}
+.is-dark .tile{background:var(--card);border-color:var(--line-2)}
+.is-dark .tile:hover{border-color:#3A3F5A;background:#141725}
+.is-dark .tile.on{background:rgba(142,162,255,.12);border-color:#8EA2FF;color:#C9D3FF}
+.is-dark .cat.on{background:rgba(142,162,255,.12);color:#C9D3FF}
+.is-dark .act.primary,.is-dark .paybtn{background:#6E86FF;border-color:#6E86FF;color:#08090F}
+.is-dark .seg button.on{background:#1A1D2B}
+.is-dark .preview{background:#0C0E16}
+.is-dark .cta{background:linear-gradient(135deg,#2B3FAE 0%,#141A3D 55%,#10121B 100%);border:1px solid #2A2E42}
+.is-dark .cta p{color:#B4BCE0}
+.is-dark .feats img{filter:brightness(.88) saturate(.95)}
+.is-dark .fam:hover{border-color:#8EA2FF}
+.is-dark .sw button{border-color:var(--card)}
+.is-dark ::-webkit-scrollbar-thumb{border-color:var(--paper)}
+.is-dark .ex.dk{--e-bg:#10121B;--e-ln:#1E2130;--e-well:#0C0E16;--e-soft:rgba(142,162,255,.12);--e-ink:#EDEFF7;--e-mut:#A3A9BF;--e-fnt:#6F7590}
+.is-dark .ex.dk{--acc:#8EA2FF}
+.is-dark .m-mob{background:#0C0E16}
+.is-dark pre{background:#0C0E16;border:1px solid var(--line)}
